@@ -1,0 +1,7 @@
+<div class="row">
+  <%= form_for :user, url: access_path, method: 'post' do |f| %>
+    <%= f.text_field :username %>
+    <%= f.password_field :password %>
+    <%= f.button 'Login', :type => 'submit' %>
+  <% end %>
+</div>

@@ -1,0 +1,40 @@
+<% if notice %>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="alert alert-info"><%= notice %></div>
+    </div>
+  </div>
+<% end %>
+
+<p>Hola amiguito <%= @current_user.profile.names %></p>
+
+<div class="row">
+  <div class="col-md-12">
+    <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#new-department">Nueva</button>
+  </div>
+  <br>
+  <div class="col-md-12">
+    <% @departments.each do |department| %>
+      <div class="col-md-3">
+        <div class="panel panel-default">
+          <div class="panel-body text-center">
+            <h4><%= department.name %></h4>
+            <p>
+              <% if department.status == 'active' %>
+                <%= link_to 'Activo', department_status_path(department, 'suspended') %>
+              <% elsif department.status == 'pending' %>
+                <%= link_to 'Pendiente', department_status_path(department, 'active') %>
+              <% else %>
+                <%= link_to 'Suspendida', department_status_path(department, 'active') %>
+              <% end %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<% content_for :modal do %>
+  <%= render 'new_department' %>
+<% end %>

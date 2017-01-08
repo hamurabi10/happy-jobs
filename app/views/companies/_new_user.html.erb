@@ -1,0 +1,41 @@
+<div class="modal fade" id="new-user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <%= form_for :profile, url: profiles_path, method: 'post' do |f| %>
+        <div class="modal-body">
+            <table class="table">
+              <tr>
+                <td class="text-warning">Usuario</td>
+                <td><%= text_field_tag 'user[username]', '', :class => 'form-control' %></td>
+              </tr>
+              <tr>
+                <td>Password</td>
+                <td><%= password_field_tag 'user[password]', '', :class => 'form-control' %></td>
+              </tr>
+              <tr>
+                <td class="text-warning">Nombre completo</td>
+                <td><%= f.text_field :names, :class => 'form-control' %></td>
+              </tr>
+              <tr>
+                <td class="text-warning">Avatar</td>
+                <td><%= f.file_field :avatar, :class => 'form-control' %></td>
+              </tr>
+              <tr>
+                <td>Teléfono</td>
+                <td><%= f.text_field :phone, :class => 'form-control' %></td>
+              </tr>
+              <tr>
+                <td class="text-warning">Email de la cuenta</td>
+                <td><%= f.email_field :email, :class => 'form-control' %></td>
+              </tr>
+            </table>
+            <%= f.hidden_field :company_id, :value => @company.id %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <%= f.button 'Guardar', :type => 'submit', :class => 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

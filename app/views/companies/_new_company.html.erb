@@ -1,0 +1,36 @@
+<div class="modal fade" id="new-company" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <%= form_for :company, url: companies_path, method: 'post' do |f| %>
+        <div class="modal-body">
+            <table class="table">
+              <tr>
+                <td class="text-warning">¿Cúal es el nombre de la empresa?</td>
+                <td><%= f.text_field :name, :class => 'form-control' %></td>
+              </tr>
+              <tr>
+                <td>Logotipo</td>
+                <td><%= f.file_field :logo, :class => 'form-control' %></td>
+              </tr>
+              <tr>
+                <td class="text-warning">¿De que trata la empresa?</td>
+                <td><%= f.text_area :description, :class => 'form-control' %></td>
+              </tr>
+              <tr>
+                <td>Teléfono</td>
+                <td><%= f.text_field :phone, :class => 'form-control' %></td>
+              </tr>
+              <tr>
+                <td class="text-warning">Email de la cuenta</td>
+                <td><%= f.email_field :email, :class => 'form-control' %></td>
+              </tr>
+            </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <%= f.button 'Guardar', :type => 'submit', :class => 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

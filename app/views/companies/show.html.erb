@@ -1,0 +1,29 @@
+<h3>
+  <%= image_tag @company.logo.url, :class => 'img-circle', :width => '100px', :height => '100px;' %>
+  <%= @company.name %>
+</h3>
+<hr>
+<div class="row">
+  <div class="col-md-12">
+    <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#new-user">Nuevo</button>
+  </div>
+  <br>
+  <div class="col-md-12">
+    <% @profiles.each do |profile| %>
+      <div>
+        <%= image_tag profile.avatar.url, :class => 'img-circle', :width => '50px', :height => '50px;' %>
+        <p><%= profile.names %></p>
+        <p><%= profile.user.username %></p>
+        <p>
+          <% if profile.user.status == 'pending' %>
+            <%= link_to  'Activar', profile_status_path(profile.user.id, 'active') %>
+          <% end %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<% content_for :modal do %>
+  <%= render 'new_user' %>
+<% end %>

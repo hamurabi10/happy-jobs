@@ -1,0 +1,28 @@
+<div class="modal fade" id="new-department" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <%= form_for :department, url: departments_path, method: 'post' do |f| %>
+        <div class="modal-body">
+            <table class="table">
+              <tr>
+                <td class="text-warning">¿Cúal es el nombre del departamento?</td>
+                <td><%= f.text_field :name, :class => 'form-control' %></td>
+              </tr>
+              <tr>
+                <td class="text-warning">¿De que trata el departamento?</td>
+                <td><%= f.text_area :description, :class => 'form-control' %></td>
+              </tr>
+              <tr>
+                <td class="text-warning">Color del departamento</td>
+                <td><%= f.color_field :color, :class => 'form-control' %></td>
+              </tr>
+            </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <%= f.button 'Guardar', :type => 'submit', :class => 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
